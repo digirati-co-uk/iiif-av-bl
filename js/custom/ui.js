@@ -180,12 +180,12 @@ function showWorkingIndicator(targetElement) {
 	if (targetElement.find('.workingIndicator').length == 0) {
 		targetElement.append(workingIndicator);
 	}
-	console.log('show working');
+	//console.log('show working');
 }
 
 function hideWorkingIndicator() {
 	$('.workingIndicator').remove();
-	console.log('hide working');
+	//console.log('hide working');
 }
 
 function getCanvasInstanceByID(canvasID) {
