@@ -239,7 +239,7 @@ function initCanvasMethods(canvasInstance) {
 			
 			if (mediaElement.type == 'Video' || mediaElement.type == 'Audio') {
 
-				mediaElement.element[0].currentTime = this.canvasClockTime - mediaElement.start - mediaElement.startOffset;
+				mediaElement.element[0].currentTime = this.canvasClockTime - mediaElement.start + mediaElement.startOffset;
 
 				if ( mediaElement.start <= this.canvasClockTime && mediaElement.end >= this.canvasClockTime ) {
 					if (this.isPlaying) {
@@ -283,7 +283,7 @@ function initCanvasMethods(canvasInstance) {
 				//console.log('CHECK LAG');
 
 				// off by 0.0001 seconds
-				if (mediaElement.element[0].currentTime - (this.canvasClockTime - mediaElement.start - mediaElement.startOffset) > 0.0001) {
+				if (mediaElement.element[0].currentTime - (this.canvasClockTime - mediaElement.start + mediaElement.startOffset) > 0.0001) {
 					
 					mediaElement.outOfSync = true;
 					
@@ -291,7 +291,7 @@ function initCanvasMethods(canvasInstance) {
 
 					var lag = mediaElement.element[0].currentTime - (this.canvasClockTime - mediaElement.start);
 					logMessage('DETECTED synchronization lag: '+ lag );
-					mediaElement.element[0].currentTime = this.canvasClockTime - mediaElement.start - mediaElement.startOffset;
+					mediaElement.element[0].currentTime = this.canvasClockTime - mediaElement.start + mediaElement.startOffset;
 
 				} else {
 					mediaElement.outOfSync = false;
