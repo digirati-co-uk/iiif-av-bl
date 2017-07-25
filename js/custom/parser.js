@@ -32,9 +32,11 @@ function initContents(canvasInstance, mediaItems) {
 
 		var mediaItem = mediaItems[i];
 		
+		/*
 		if (mediaItem.motivation != 'painting') {
 			return null;
 		}
+		*/
 
 		var mediaSource;
 		if (mediaItem.body.type == 'TextualBody') {
