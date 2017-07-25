@@ -21,5 +21,5 @@ See https://github.com/IIIF/iiif-av/blob/master/source/api/av/index.md for model
 Two additional useful fixtures:
 
 * [simplest time-based canvas](https://digirati-co-uk.github.io/iiif-av-bl/data/iiif/02.json) - Shows an image for part of the duration of a canvas.
-* [parts of media annotated onto different canvas](https://digirati-co-uk.github.io/data/iiif-av-bl/iiif/16.json) - Example - divide a performance up into scenes on different canvases.
+* [parts of media annotated onto different canvas](https://digirati-co-uk.github.io/iiif-av-bl/data/iiif/16.json) - Example - divide a performance up into scenes on different canvases.
 
