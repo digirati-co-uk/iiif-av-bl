@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="de">
+	<head class="html5">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		
+		<title>IIIF-AV British Library Test Fixtures</title>
+		
+		<link rel="stylesheet" href="./css/normalize.css">
+		<link rel="stylesheet" href="./css/jquery-ui.min.css">
+		<link rel="stylesheet" href="./css/style.css">
+		
+		<script type="text/javascript" src="./js/includes/jquery-2.2.1.min.js"></script>
+		<script type="text/javascript" src="./js/includes/jquery-ui.min.js"></script>
+
+		<script type="text/javascript" src="./js/custom/parser.js"></script>
+		<script type="text/javascript" src="./js/custom/ui.js"></script>
+		<script type="text/javascript" src="./js/custom/canvasClock.js"></script>
+		<script type="text/javascript" src="./js/custom/main.js"></script>
+	</head>
+	<body>
+		
+		<div class="testFixtureSelection">
+			<button class="testFixture" data-json="data/bl/01_gapless_audio.json">Load Test 1</button>
+			<button class="testFixture" data-json="data/bl/02_gapless_video.json">Load Test 2</button>
+			<button class="testFixture" data-json="data/bl/03_synchronised_video.json">Load Test 3</button>
+			<button class="testFixture" data-json="data/bl/04_synchronised_av.json">Load Test 4</button>
+			<button class="testFixture" data-json="data/bl/05_synchronised_av_text.json">Load Test 5</button>
+			<button class="testFixture" data-json="data/iiif/fire.json">Load Test 6</button>
+			<button class="testFixture" data-json="data/iiif/mahler-symphony.json">Load Test 7</button>
+			<button class="testFixture" data-json="data/iiif/lunchroom-manners.json">Load Test 8</button>
+		</div>
+		<input type="text" name="manifestInput" id="manifestInput"/>
+		<button id="parseManifestButton">Parse Manifest</button>
+		<button id="viewManifestButton">View Manifest</button>
+
+		<hr>
+
+		<h3 class="title"></h3>
+		<div class="description"></div>
+
+		<div class="canvasNavigationContainer"></div>
+
+		<div class="playerContainer"></div>
+
+		<button id="toggleLogsButton">Show / Hide Logs</button>
+		<div class="logContainer">
+			<textarea></textarea>
+			<button id="clearLogsButton">Clear</button>
+		</div>
+
+	</body>
+</html>
