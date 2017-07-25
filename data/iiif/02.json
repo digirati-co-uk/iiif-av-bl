@@ -23,7 +23,7 @@
 								"id": "https://digirati-co-uk.github.io/iiif-av-bl/iiif/01/content/anno/1",
 								"type": "Annotation",
 								"body": {
-									"id": "https://digirati-co-uk.github.io/iiif-av-bl/media/weather.jpg",
+									"id": "https://digirati-co-uk.github.io/iiif-av-bl/data/media/weather.jpg",
 									"type": "Image",
 									"format": "image/jpeg",
 									"width": 1920,
