@@ -94,11 +94,18 @@ function initContents(canvasInstance, mediaItems) {
 			percentageWidth = convertToPercentage(mediaWidth, canvasInstance.canvasWidth),
 			percentageHeight = convertToPercentage(mediaHeight, canvasInstance.canvasHeight);
 
-		var mediaOffset = (mediaItem.body.type != 'TextualBody' && mediaItem.target.indexOf('t=') != -1) ? mediaItem.body.id.split('t=')[1] : null,
-			offsetTimings = (mediaOffset) ? mediaOffset.split(',') : null,
-			offsetStart = (offsetTimings) ? offsetTimings[0] : null,
-			offsetEnd = (offsetTimings) ? offsetTimings[1] : null;
+		var temporalOffsets = /t=([^&]+)/g.exec(mediaItem.body.id);
 
+		var ot;
+		if(temporalOffsets && temporalOffsets[1]) {
+			ot = temporalOffsets[1].split(',');
+		} else {
+			ot = [null, null];
+		}
+
+		var offsetStart = (ot[0]) ? parseInt(ot[0]) : ot[0],
+			offsetEnd = (ot[1]) ? parseInt(ot[1]) : ot[1];
+		
 		var itemData = {
 			'type': mediaItem.body.type,
 			'source': mediaSource,
