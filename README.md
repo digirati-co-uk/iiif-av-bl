@@ -1,5 +1,7 @@
 Test fixtures to investigate technical challenges of IIIF-AV
 
+See [demo](https://digirati-co-uk.github.io/iiif-av-bl/)
+
 See https://docs.google.com/document/d/1lcef8tjqfzBqRSmWLkJZ46Pj0pm8nSD11hbCAd7Hqxg/edit
 
 1.	[Gapless audio playback](https://digirati-co-uk.github.io/iiif-av-bl/bl/01_gapless_audio.json). One IIIF canvas with three annotations with audio content, that must be played in sequence with no gap.
