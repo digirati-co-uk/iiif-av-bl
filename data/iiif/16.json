@@ -19,7 +19,7 @@
                                 "type": "Annotation",
                                 "motivation": "painting",
                                 "body": {
-                                    "id": "http://dlib.indiana.edu/iiif_av/30-minute-clock/medium/30-minute-clock.mp4#t=0,30",
+                                    "id": "data/media/sample-6m-green.mp4#t=0,30",
                                     "type": "Video",
                                     "format": "video/mp4"
                                 },
@@ -42,7 +42,7 @@
                                 "type": "Annotation",
                                 "motivation": "painting",
                                 "body": {
-                                    "id": "http://dlib.indiana.edu/iiif_av/30-minute-clock/medium/30-minute-clock.mp4#t=30,60",
+                                    "id": "data/media/sample-6m-green.mp4#t=30,60",
                                     "type": "Video",
                                     "format": "video/mp4"
                                 },
@@ -65,7 +65,7 @@
                                 "type": "Annotation",
                                 "motivation": "painting",
                                 "body": {
-                                    "id": "http://dlib.indiana.edu/iiif_av/30-minute-clock/medium/30-minute-clock.mp4#t=1200,1230",
+                                    "id": "data/media/sample-6m-green.mp4#t=60,90",
                                     "type": "Video",
                                     "format": "video/mp4"
                                 },
