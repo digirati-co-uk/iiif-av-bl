@@ -164,7 +164,7 @@ function renderMediaElement(canvasInstance, data) {
 			var self = this;
 			
 			if (this.active) {
-
+				canvasInstance.checkMediaSynchronization();
 				if (this.element.get(0).readyState > 0 && !this.outOfSync) {
 					canvasInstance.playbackStalled(false, self);
 				} else {
@@ -201,6 +201,7 @@ function renderMediaElement(canvasInstance, data) {
 		});
 		mediaElement.on('seeking', function() {
 			//console.log('seeking');
+			//self.checkForStall();
 		});
 		mediaElement.attr('preload', 'auto');
 		mediaElement.get(0).load();

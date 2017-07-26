@@ -4,7 +4,7 @@
 
 // OPTIONS
 var canvasClockFrequency = 25,
-	lowPriorityFrequency = 150,
+	lowPriorityFrequency = 100,
 	highPriorityFrequency = 25,
 	defaultCanvasWidth = 600,
 	defaultCanvasHeight = 400;
@@ -121,7 +121,7 @@ function initCanvasMethods(canvasInstance) {
 		
 	}
 
-	canvasInstance.playCanvas = function() {
+	canvasInstance.playCanvas = function(withoutUpdate) {
 		
 		if (this.isPlaying) { return; }
 
@@ -144,13 +144,15 @@ function initCanvasMethods(canvasInstance) {
 
 		this.isPlaying = true;
 
-		this.synchronizeMedia();
+		if (!withoutUpdate) {
+			this.synchronizeMedia();
+		}
 
 		logMessage('PLAY canvas');
 		
 	}
 
-	canvasInstance.pauseCanvas = function() {
+	canvasInstance.pauseCanvas = function(withoutUpdate) {
 		window.clearInterval(this.highPriorityInterval);
 		window.clearInterval(this.lowPriorityInterval);
 
@@ -158,9 +160,11 @@ function initCanvasMethods(canvasInstance) {
 
 		this.isPlaying = false;
 
-		this.highPriorityUpdater();
-		this.lowPriorityUpdater();
-		this.synchronizeMedia();
+		if (!withoutUpdate) {
+			this.highPriorityUpdater();
+			this.lowPriorityUpdater();
+			this.synchronizeMedia();
+		}
 
 		logMessage('PAUSE canvas');
 	}
@@ -180,7 +184,7 @@ function initCanvasMethods(canvasInstance) {
 	}
 
 	canvasInstance.lowPriorityUpdater = function() {
-		this.updateMediaActiveStates(this.canvasClockTime);
+		this.updateMediaActiveStates();
 	}
 
 	canvasInstance.updateMediaActiveStates = function() {
@@ -280,21 +284,23 @@ function initCanvasMethods(canvasInstance) {
 			if ( (mediaElement.type == 'Video' || mediaElement.type == 'Audio') && 
 				 (mediaElement.start <= this.canvasClockTime && mediaElement.end >= this.canvasClockTime) ) {
 
-				//console.log('CHECK LAG');
+				var correctTime = (this.canvasClockTime - mediaElement.start + mediaElement.startOffset),
+					factualTime = mediaElement.element[0].currentTime;
 
-				// off by 0.0001 seconds
-				if (mediaElement.element[0].currentTime - (this.canvasClockTime - mediaElement.start + mediaElement.startOffset) > 0.0001) {
+				// off by 0.2 seconds
+				if ( Math.abs(factualTime - correctTime) > 0.4) {
 					
 					mediaElement.outOfSync = true;
+					//this.playbackStalled(true, mediaElement);
 					
-					//mediaElement.checkForStall();
-
-					var lag = mediaElement.element[0].currentTime - (this.canvasClockTime - mediaElement.start);
-					logMessage('DETECTED synchronization lag: '+ lag );
-					mediaElement.element[0].currentTime = this.canvasClockTime - mediaElement.start + mediaElement.startOffset;
+					var lag = Math.abs(factualTime - correctTime);
+					logMessage('DETECTED synchronization lag: '+ Math.abs(lag) );
+					//mediaElement.element[0].currentTime = correctTime;
+					this.synchronizeMedia();
 
 				} else {
 					mediaElement.outOfSync = false;
+					//this.playbackStalled(false, mediaElement);
 				}
 
 			}
@@ -318,7 +324,7 @@ function initCanvasMethods(canvasInstance) {
 
 				this.wasPlaying = this.isPlaying;
 
-				this.pauseCanvas();
+				this.pauseCanvas(true);
 				/*
 				window.clearInterval(this.highPriorityIntervalID);
 				window.clearInterval(this.lowPriorityIntervalID);
@@ -343,7 +349,7 @@ function initCanvasMethods(canvasInstance) {
 
 				if (this.isStalled && this.wasPlaying) {
 
-					this.playCanvas();
+					this.playCanvas(true);
 					/*
 					if (this.canvasClockTime === this.canvasClockDuration) {
 						this.canvasClockTime = 0;
