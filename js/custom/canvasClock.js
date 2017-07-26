@@ -295,8 +295,8 @@ function initCanvasMethods(canvasInstance) {
 					
 					var lag = Math.abs(factualTime - correctTime);
 					logMessage('DETECTED synchronization lag: '+ Math.abs(lag) );
-					//mediaElement.element[0].currentTime = correctTime;
-					this.synchronizeMedia();
+					mediaElement.element[0].currentTime = correctTime;
+					//this.synchronizeMedia();
 
 				} else {
 					mediaElement.outOfSync = false;
