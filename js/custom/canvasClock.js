@@ -325,12 +325,6 @@ function initCanvasMethods(canvasInstance) {
 				this.wasPlaying = this.isPlaying;
 
 				this.pauseCanvas(true);
-				/*
-				window.clearInterval(this.highPriorityIntervalID);
-				window.clearInterval(this.lowPriorityIntervalID);
-
-				window.clearInterval(this.canvasClockInterval);
-				*/
 
 				this.isStalled = aBoolean;
 
@@ -350,23 +344,6 @@ function initCanvasMethods(canvasInstance) {
 				if (this.isStalled && this.wasPlaying) {
 
 					this.playCanvas(true);
-					/*
-					if (this.canvasClockTime === this.canvasClockDuration) {
-						this.canvasClockTime = 0;
-					}
-					this.canvasClockStartDate = Date.now() - (this.canvasClockTime * 1000);
-					
-					var self = this;
-					this.highPriorityInterval = window.setInterval(function() {
-						self.highPriorityUpdater();
-					}, highPriorityFrequency);
-					this.lowPriorityInterval = window.setInterval(function() {
-						self.lowPriorityUpdater();
-					}, lowPriorityFrequency);
-					this.canvasClockInterval = window.setInterval(function() {
-						self.canvasClockUpdater();
-					}, canvasClockFrequency);
-					*/
 
 				}
 
