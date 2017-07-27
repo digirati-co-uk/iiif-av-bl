@@ -35,7 +35,7 @@ based on [Evaluation of Existing Approaches](EVALUATION.md)
 
 #### Relevant Files
 
-* [main.js]([/js/custom/main.js) </br>UI initialisation
+* [main.js](/js/custom/main.js) </br>UI initialisation
 * [ui.js](/js/custom/ui.js) </br>UI methods (canvas navigation, range navigation, logging, helpers)
 * [parser.js](/js/custom/parser.js) </br>Parser and media initialisation methods
 * [canvasClock.js](/js/custom/canvasClock.js) </br>Canvas clock methods (player initialisation, timing, synchronisation)
