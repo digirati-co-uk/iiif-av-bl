@@ -1,4 +1,4 @@
-### Test fixtures to investigate technical challenges of IIIF-AV
+## Test fixtures to investigate technical challenges of IIIF-AV
 
 See https://docs.google.com/document/d/1lcef8tjqfzBqRSmWLkJZ46Pj0pm8nSD11hbCAd7Hqxg/edit
 
@@ -6,7 +6,7 @@ See https://docs.google.com/document/d/1lcef8tjqfzBqRSmWLkJZ46Pj0pm8nSD11hbCAd7H
 
 ___
 
-#### Fixture Manifests
+### Fixture Manifests
 
 1.	[Gapless audio playback](https://digirati-co-uk.github.io/iiif-av-bl/data/bl/01_gapless_audio.json). One IIIF canvas with three annotations with audio content, that must be played in sequence with no gap.
 2.	[Gapless video playback](https://digirati-co-uk.github.io/iiif-av-bl/data/bl/02_gapless_video.json). One IIIF canvas with three annotations with video content, that must be played in sequence with no gap.
@@ -30,17 +30,17 @@ Two additional useful fixtures:
 ___
 
 
-#### Implementation
+### Implementation
 based on [Evaluation of Existing Approaches](EVALUATION.md)
 
-##### Relevant Files
+#### Relevant Files
 
 * [main.js]([/js/custom/main.js) </br>UI initialisation
 * [ui.js](/js/custom/ui.js) </br>UI methods (canvas navigation, range navigation, logging, helpers)
 * [parser.js](/js/custom/parser.js) </br>Parser and media initialisation methods
 * [canvasClock.js](/js/custom/canvasClock.js) </br>Canvas clock methods (player initialisation, timing, synchronisation)
 
-##### Canvas Instances / Canvas Clock
+#### Canvas Instances / Canvas Clock
 
 * The canvas clock controls synchronisation and playback of media items. It is an abstract timing mechanism, which serves as a point of reference to the synchronisation modules, rather than being based on the native timing mechanisms of a media element. The `canvasClockUpdater()` method updates the abstract timing (based on `canvasClockStartDate`, `canvasClockDuration` and `canvasClockTime`). Every canvas instance has its own canvas clock, player element and updater methods (see **Media Synchronisation**). A canvas clock is always independent of any other canvas instances (playback state, current time, etc.) and contains its own set of media elements (see **Manifest Parsing**).
 
@@ -69,7 +69,7 @@ based on [Evaluation of Existing Approaches](EVALUATION.md)
   * stallRequestedBy (array)
 
 
-##### Manifest Parsing
+#### Manifest Parsing
 
 * `initContents()` parses all media items from the manifest data, pushes them to the custom `mediaElements` array of the respective canvasInstance (see `canvasInstances[0].mediaElements`) and renders them in the DOM (both within the canvas and inside the timeline). The `mediaElements[0].element` contains a binding to the rendered DOM element.
 * A single media element object contains the following properties and methods:
@@ -91,7 +91,7 @@ based on [Evaluation of Existing Approaches](EVALUATION.md)
   * outOfSync (boolean)
 
 
-##### Media Synchronisation
+#### Media Synchronisation
 
 * Based on the canvas clock timing, media items are synchronised using a set of updater methods. These methods are controlled by two intervals (using `window.setInterval`) of different frequencies (`lowPriorityFrequency` and `highPriorityFrequency`). The intervals are set and cancelled by the canvas instance methods `playCanvas()` and `pauseCanvas()`. Media items are synchronised in two ways:
 	* `updateMediaActiveStates()` controls the visibility of items (based on the `mediaElements[0].start` & `mediaElements[0].end` properties, as well as the canvas and media element timing offsets)
