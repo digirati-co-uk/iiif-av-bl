@@ -16,7 +16,7 @@ ___
 6.	[_Fire_](https://tomcrane.github.io/fire/manifest3.json). Images, video and text
 7.	[_Mahler 3_](https://dlib.indiana.edu/iiif_av/mahler-symphony-3/mahler-symphony-3.json) from Indiana showing range navigation. There are two canvases in this example, each representing a CD. The range metadata provides the navigation.
 8.	[_Lunchroom manners_](https://dlib.indiana.edu/iiif_av/lunchroom_manners/lunchroom_manners.json) from Indiana showing range navigation in a video.
-9.	_Pop goes the weasel_ from the British Library showing range navigation of audio.
+9.	[_Bach: Brandenburg Concerto no. 1_](https://britishlibrary.github.io/iiif-av-samples/symphony/manifest.json) from the British Library showing range navigation of audio.
 
 Later - verify approach works with mixture of file formats, and MPEG-DASH/HLS
 
